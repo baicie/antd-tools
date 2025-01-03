@@ -1,0 +1,22 @@
+{
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm run -C packages/cli build",
+    "update:version": "tsx scripts/update-version.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "cli": "tsx packages/cli/index.ts",
+    "cli-prod": "node packages/cli/dist/index.js",
+    "cz": "cz"
+  },
+  "devDependencies": {
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.7",
+    "unbuild": "^1.1.2"
+  },
+  "dependencies": {
+    "@pnpm/find-workspace-packages": "^6.0.7",
+    "rimraf": "^5.0.0"
+  }
+}
