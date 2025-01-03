@@ -8,9 +8,10 @@ export const bareImportRE = /(?<=^)(?![a-zA-Z]:)[\w@](?!.*:\/\/).*$/;
 
 interface StartDevServerOptions {
   root: string;
+  force?: boolean;
 }
 
-async function checkAndCreateDevFiles(root: string) {
+async function checkAndCreateDevFiles(root: string, force = false) {
   try {
     // 读取 package.json
     const pkgPath = path.resolve(root, "package.json");
@@ -21,9 +22,22 @@ async function checkAndCreateDevFiles(root: string) {
       const cachePath = path.resolve(root, "node_modules/.antd");
       const indexHtmlPath = path.resolve(cachePath, "index.html");
       const mainTsPath = path.resolve(cachePath, "main.tsx");
+      const patchTsPath = path.resolve(cachePath, "patch.ts");
 
       // 创建缓存目录
       await fs.ensureDir(cachePath);
+
+      const indexHtmlExists = await fs.pathExists(indexHtmlPath);
+      const mainTsExists = await fs.pathExists(mainTsPath);
+      const patchExists = await fs.pathExists(patchTsPath);
+
+      // 如果文件存在且不是强制模式，输出提示
+      if ((indexHtmlExists || mainTsExists || patchExists) && !force) {
+        console.log(
+          "\x1b[33m开发文件已存在。使用 -f 或 --force 参数强制覆盖。\x1b[0m"
+        );
+        return cachePath;
+      }
 
       // 创建 index.html
       const indexHtml = `
@@ -44,6 +58,7 @@ async function checkAndCreateDevFiles(root: string) {
       const mainTs = `
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import './patch.ts';
 
 // 这里可以导入你要开发的组件
 import Button from '../../components/button/index';
@@ -52,17 +67,37 @@ const root = createRoot(document.getElementById('root')!);
 
 root.render(
   <React.StrictMode>
-    <Button />
+    <Button>button</Button>
   </React.StrictMode>
 );`;
 
-      if (!(await fs.pathExists(indexHtmlPath))) {
-        await fs.writeFile(indexHtmlPath, indexHtml);
-      }
+      const patchTs = `
+import { createRoot } from 'react-dom/client';
+import { unstableSetRender } from 'antd';
 
-      if (!(await fs.pathExists(mainTsPath))) {
-        await fs.writeFile(mainTsPath, mainTs);
-      }
+unstableSetRender(function (node, container) {
+  container._reactRoot || (container._reactRoot = createRoot(container));
+  var root = container._reactRoot;
+  root.render(node);
+  return function () {
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        root.unmount();
+        resolve();
+      }, 0);
+    });
+  };
+});
+`;
+
+      await fs.writeFile(indexHtmlPath, indexHtml);
+      console.log("\x1b[32m创建文件: \x1b[0m" + indexHtmlPath);
+
+      await fs.writeFile(mainTsPath, mainTs);
+      console.log("\x1b[32m创建文件: \x1b[0m" + mainTsPath);
+
+      await fs.writeFile(patchTsPath, patchTs);
+      console.log("\x1b[32m创建文件: \x1b[0m" + patchTsPath);
 
       return cachePath;
     }

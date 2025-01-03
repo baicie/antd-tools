@@ -19,6 +19,7 @@
   "author": "baicie",
   "license": "MIT",
   "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@vitejs/plugin-react-swc": "^3.7.2",
     "cac": "^6.7.14",
     "fs-extra": "^11.2.0",
