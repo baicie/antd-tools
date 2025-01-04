@@ -15,6 +15,15 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
     devDependencies:
+      '@types/node':
+        specifier: ^22.10.5
+        version: 22.10.5
+      chalk:
+        specifier: ^5.4.1
+        version: 5.4.1
+      consola:
+        specifier: ^3.3.3
+        version: 3.3.3
       tsup:
         specifier: ^6.7.0
         version: 6.7.0(@swc/core@1.10.1)(postcss@8.4.49)(typescript@5.7.2)
@@ -32,7 +41,7 @@ importers:
         version: 1.0.3(antd@5.22.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.2
-        version: 3.7.2(vite@6.0.7(@types/node@20.0.0)(sass@1.83.0)(tsx@4.19.2))
+        version: 3.7.2(vite@6.0.7(@types/node@22.10.5)(sass@1.83.0)(tsx@4.19.2))
       cac:
         specifier: ^6.7.14
         version: 6.7.14
@@ -41,11 +50,26 @@ importers:
         version: 11.2.0
       vite:
         specifier: ^6.0.7
-        version: 6.0.7(@types/node@20.0.0)(sass@1.83.0)(tsx@4.19.2)
+        version: 6.0.7(@types/node@22.10.5)(sass@1.83.0)(tsx@4.19.2)
     devDependencies:
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
+      '@types/react':
+        specifier: ^19.0.2
+        version: 19.0.2
+      '@types/react-dom':
+        specifier: ^19.0.2
+        version: 19.0.2(@types/react@19.0.2)
+      antd:
+        specifier: ^5.22.7
+        version: 5.22.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(@swc/core@1.10.1)(postcss@8.4.49)(tsx@4.19.2)(typescript@5.7.2)
@@ -211,12 +235,15 @@ packages:
 
   '@esbuild-kit/cjs-loader@2.4.2':
     resolution: {integrity: sha512-BDXFbYOJzT/NBEtp71cvsrGPwGAMGRB/349rwKuoxNSiKjPraNNnlK6MIIabViCjqZugu6j+xeMDlEkWdHHJSg==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-kit/core-utils@3.1.0':
     resolution: {integrity: sha512-Uuk8RpCg/7fdHSceR1M6XbSZFSuMrxcePFuGgyvsBn+u339dk5OeL4jv2EojwTN2st/unJGsVm4qHWjWNmJ/tw==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-kit/esm-loader@2.5.5':
     resolution: {integrity: sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild/aix-ppc64@0.23.1':
     resolution: {integrity: sha512-6VhYk1diRqrhBAqpJEdjASR/+WVRtfjpqKuNw11cLiaWpAT/Uu+nokB+UJnevzy/P9C/ty6AOe0dwueMrGh/iQ==}
@@ -1381,6 +1408,17 @@ packages:
   '@types/node@20.0.0':
     resolution: {integrity: sha512-cD2uPTDnQQCVpmRefonO98/PPijuOnnEy5oytWJFPY1N9aJCz2wJ5kSGWO+zJoed2cY2JxQh6yBuUq4vIn61hw==}
 
+  '@types/node@22.10.5':
+    resolution: {integrity: sha512-F8Q+SeGimwOo86fiovQh8qiXfFEh2/ocYv7tU5pJ3EXMSSxk1Joj5wefpFK2fHTf/N6HKGSxIDBT9f3gCxXPkQ==}
+
+  '@types/react-dom@19.0.2':
+    resolution: {integrity: sha512-c1s+7TKFaDRRxr1TxccIX2u7sfCnc3RxkVyBIUA2lCpyqCF+QoAwQ/CBg7bsMdVwP120HEH143VQezKtef5nCg==}
+    peerDependencies:
+      '@types/react': ^19.0.0
+
+  '@types/react@19.0.2':
+    resolution: {integrity: sha512-USU8ZI/xyKJwFTpjSVIrSeHBVAGagkHQKPNbxeWwql/vDmnTIBgx+TJnhFnj1NXgz8XfprU0egV2dROLGpsBEg==}
+
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
@@ -1602,6 +1640,10 @@ packages:
 
   consola@3.3.1:
     resolution: {integrity: sha512-GyKnPG3/I+a4RtJxgHquJXWr70g9I3c4NT3dvqh0LPHQP2nZFQBOBszb7a5u/pGzqr40AKplQA6UxM1BSynSXg==}
+    engines: {node: ^14.18.0 || >=16.10.0}
+
+  consola@3.3.3:
+    resolution: {integrity: sha512-Qil5KwghMzlqd51UXM0b6fyaGHtOC22scxrwrz4A2882LyUMwQjnvaedN1HAeXzphspQ6CpHkzMAWxBTUruDLg==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   convert-source-map@1.9.0:
@@ -1852,6 +1894,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -2563,6 +2606,7 @@ packages:
   right-pad@1.0.1:
     resolution: {integrity: sha512-bYBjgxmkvTAfgIYy328fmkwhp39v8lwVgWhhrzxPV3yHtcSqyYKe9/XOhvW48UFjATg3VuJbpsp5822ACNvkmw==}
     engines: {node: '>= 0.10'}
+    deprecated: Please use String.prototype.padEnd() over this package.
 
   rimraf@5.0.0:
     resolution: {integrity: sha512-Jf9llaP+RvaEVS5nPShYFhtXIrb3LRKP281ib3So0KkeZKo2wIKyq0Re7TOSwanasA423PSr6CCIL4bP6T040g==}
@@ -2839,6 +2883,9 @@ packages:
   unbuild@1.2.1:
     resolution: {integrity: sha512-J4efk69Aye43tWcBPCsLK7TIRppGrEN4pAlDzRKo3HSE6MgTSTBxSEuE3ccx7ixc62JvGQ/CoFXYqqF2AHozow==}
     hasBin: true
+
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
   unique-string@2.0.0:
     resolution: {integrity: sha512-uNaeirEPvpZWSgzwsPGtU2zVSTrn/8L5q/IexZmH0eH6SA73CmAA5U4GwORTxQAZs95TAXLNqeLoPPNO5gZfWg==}
@@ -4047,16 +4094,28 @@ snapshots:
 
   '@types/node@20.0.0': {}
 
+  '@types/node@22.10.5':
+    dependencies:
+      undici-types: 6.20.0
+
+  '@types/react-dom@19.0.2(@types/react@19.0.2)':
+    dependencies:
+      '@types/react': 19.0.2
+
+  '@types/react@19.0.2':
+    dependencies:
+      csstype: 3.1.3
+
   '@types/resolve@1.20.2': {}
 
   '@types/ssri@7.1.1':
     dependencies:
-      '@types/node': 20.0.0
+      '@types/node': 22.10.5
 
-  '@vitejs/plugin-react-swc@3.7.2(vite@6.0.7(@types/node@20.0.0)(sass@1.83.0)(tsx@4.19.2))':
+  '@vitejs/plugin-react-swc@3.7.2(vite@6.0.7(@types/node@22.10.5)(sass@1.83.0)(tsx@4.19.2))':
     dependencies:
       '@swc/core': 1.10.1
-      vite: 6.0.7(@types/node@20.0.0)(sass@1.83.0)(tsx@4.19.2)
+      vite: 6.0.7(@types/node@22.10.5)(sass@1.83.0)(tsx@4.19.2)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -4311,6 +4370,8 @@ snapshots:
       proto-list: 1.2.4
 
   consola@3.3.1: {}
+
+  consola@3.3.3: {}
 
   convert-source-map@1.9.0: {}
 
@@ -5655,7 +5716,7 @@ snapshots:
       '@rollup/plugin-replace': 5.0.2(rollup@3.21.5)
       '@rollup/pluginutils': 5.0.2(rollup@3.21.5)
       chalk: 5.4.1
-      consola: 3.3.1
+      consola: 3.3.3
       defu: 6.1.2
       esbuild: 0.17.18
       globby: 13.1.4
@@ -5676,6 +5737,8 @@ snapshots:
     transitivePeerDependencies:
       - sass
       - supports-color
+
+  undici-types@6.20.0: {}
 
   unique-string@2.0.0:
     dependencies:
@@ -5703,13 +5766,13 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite@6.0.7(@types/node@20.0.0)(sass@1.83.0)(tsx@4.19.2):
+  vite@6.0.7(@types/node@22.10.5)(sass@1.83.0)(tsx@4.19.2):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.4.49
       rollup: 4.29.1
     optionalDependencies:
-      '@types/node': 20.0.0
+      '@types/node': 22.10.5
       fsevents: 2.3.3
       sass: 1.83.0
       tsx: 4.19.2

@@ -11,6 +11,9 @@
     "cz": "cz"
   },
   "devDependencies": {
+    "@types/node": "^22.10.5",
+    "chalk": "^5.4.1",
+    "consola": "^3.3.3",
     "tsup": "^6.7.0",
     "tsx": "^3.12.7",
     "unbuild": "^1.1.2"

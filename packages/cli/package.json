@@ -1,6 +1,6 @@
 {
   "name": "@baicie/antd-tools",
-  "version": "0.2.0",
+  "version": "0.0.1",
   "bin": {
     "bantd": "index.js"
   },
@@ -27,6 +27,11 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "antd": "^5.22.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"

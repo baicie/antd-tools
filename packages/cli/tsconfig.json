@@ -1,6 +1,6 @@
 {
   "include": ["src", "index.ts"],
-  "exclude": ["node_modules", "src/template/**"],
+  "exclude": ["node_modules", "templates"],
   "compilerOptions": {
     "outDir": "dist",
     "target": "ESNext",

@@ -1,2 +1,2 @@
-npm i @baicie/cli -g
+npm i @baicie/antd-tools -g
 bca
